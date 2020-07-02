@@ -1,0 +1,48 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  position: relative;
+  opacity: 0.75;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.bgimg-1 {
+  background-image: url("https://i.gifer.com/Zagv.gif");
+  min-height: 100%;
+}
+
+.bgimg-2 {
+  background-image: url("https://media1.giphy.com/media/l3vRc8nQ41AcCmqc0/giphy.gif");
+  min-height: 100%;
+}
+
+.bgimg-3 {
+  background-image: url("https://i.pinimg.com/originals/f2/52/05/f25205b68f7168fc06a1dc6bdf93246a.gif");
+  min-height: 100%;
+}
+
+.caption {
+  font-size: 50px;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+}
+
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 40px "Lato", sans-serif;
+  color: #fff;
+}

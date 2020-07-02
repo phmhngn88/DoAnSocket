@@ -1,4 +1,4 @@
-import socket 
+import socket
 
 SERVER = 'localhost'
 PORT = 5050
@@ -6,7 +6,9 @@ PORT = 5050
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 
-adminPass = 'uname=admin&psw=admin'
+FirstPass = 'uname=An&psw=ImVerySmart'
+SecondPass = 'uname=Binh&psw=ImSoHumble'
+ThirdPass = 'uname=Chi&psw=ImVeryBadass'
 
 def openFile(filename):
     try:
@@ -32,7 +34,7 @@ def createServer():
             pieces = rd.split('\n')
             #if len(pieces) >0:
             #    print(pieces[0])
-            
+
             line = pieces[0].split(' ')
             mode = line[0]
             if mode == 'GET':
@@ -58,7 +60,9 @@ def createServer():
                     data = "HTTP/1.1 404 Not Found\r\n"
                     data += "\r\n"
             elif mode == 'POST':
-                if (adminPass == pieces[-1]):
+                if (pieces[-1] == FirstPass or
+                    pieces[-1] == SecondPass or
+                    pieces[-1] == ThirdPass):
                     print('Login: Success')
                     data = "HTTP/1.1 302 Found\r\n"
                     data += "Location: /member.html\r\n"
@@ -82,5 +86,3 @@ def createServer():
 
 print('Access http://localhost:5050')
 createServer()
-        
-        
