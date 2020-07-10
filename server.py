@@ -6,6 +6,7 @@ PORT = 5050
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 
+DefaultPass = 'uname=admin&psw=admin'
 FirstPass = 'uname=An&psw=ImVerySmart'
 SecondPass = 'uname=Binh&psw=ImSoHumble'
 ThirdPass = 'uname=Chi&psw=ImVeryBadass'
@@ -29,12 +30,9 @@ def createServer():
         while True:
             (conn, addr) = serversocket.accept()
             #print(f"[CONNECTION] connected to {addr}")
-            rd = conn.recv(1024).decode(FORMAT)
+            rd = conn.recv(1024).decode(FORMAT) #Message from client
             print(rd)
             pieces = rd.split('\n')
-            #if len(pieces) >0:
-            #    print(pieces[0])
-
             line = pieces[0].split(' ')
             mode = line[0]
             if mode == 'GET':
@@ -42,9 +40,7 @@ def createServer():
                 fileExtension = filename.split('.')[-1];
                 if (openFile(filename) or filename == ""):
                     if filename == 'index.html' or filename == '':
-                        #print(filename)
                         F = open('index.html', encoding="utf8").read()
-                        #print(F)
                         data = "HTTP/1.1 200 OK\r\n"
                         data += "Content-Type: text/html; charset=utf-8\r\n"
                         data += "\r\n"
@@ -62,7 +58,8 @@ def createServer():
             elif mode == 'POST':
                 if (pieces[-1] == FirstPass or
                     pieces[-1] == SecondPass or
-                    pieces[-1] == ThirdPass):
+                    pieces[-1] == ThirdPass or
+                    pieces[-1] == DefaultPass):
                     print('Login: Success')
                     data = "HTTP/1.1 302 Found\r\n"
                     data += "Location: /member.html\r\n"
