@@ -72,11 +72,7 @@ def createServer():
                     data = "HTTP/1.1 302 Found\r\n"
                     data += "Location: /404.html\r\n"
                     data += "\r\n"
-<<<<<<< HEAD
-=======
 
-            #print(data)
->>>>>>> bd85dd6863eb45755056589085a8279d6a2edeef
             conn.sendall(data.encode())
             conn.shutdown(socket.SHUT_WR)
     except KeyboardInterrupt:
