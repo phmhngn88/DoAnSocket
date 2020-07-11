@@ -1,6 +1,6 @@
 import socket
 
-SERVER = 'localhost'
+SERVER = ''
 PORT = 5050
 
 ADDR = (SERVER, PORT)
